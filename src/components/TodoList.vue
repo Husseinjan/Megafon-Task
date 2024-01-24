@@ -1,23 +1,18 @@
-
 <template>
-  <div class="p-4">
-    <h1 class="text-2xl font-bold mb-4">Todo List</h1>
-    <button @click="createTask" class="bg-blue-500 text-white px-4 py-2 rounded">
-      Create Task
+  <div class="p-4 bg-green-545">
+    <h1 class="text-white   items-center  font-bold  mb-4 uppercase font-extrabold">Список задач</h1>
+    <button @click="createTask" class="bg-violet-600 text-white px-4 py-2 rounded">
+      Создание задач
     </button>
-
+    
     <ul class="mt-4">
-      <li
-        v-for="task in sortedTasks"
-        :key="task.id"
-        class="mb-2 p-2 border border-gray-300 rounded"
-      >
-        {{ task.title }} - {{ task.createdAt }}
+      <li v-for="task in sortedTasks" :key="task.id" class="my-2 p-2 border rounded">
+        <span>{{ task.title }} - {{ task.created }}</span>
         <button @click="editTask(task)" class="ml-2 bg-yellow-500 text-white px-2 py-1 rounded">
-          Edit
+          Редактировать
         </button>
         <button @click="deleteTask(task.id)" class="ml-2 bg-red-500 text-white px-2 py-1 rounded">
-          Delete
+          Удалить
         </button>
       </li>
     </ul>
@@ -26,34 +21,33 @@
       v-if="isModalOpen"
       class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
     >
-      <div class="bg-white p-4 rounded w-1/3">
-        <h2 class="text-lg font-bold mb-4">{{ editingTask ? 'Edit Task' : 'Create Task' }}</h2>
+      <div class="bg-white p-4 rounded w-2/5">
+        <h2 class="text-lg font-semibold mb-4">{{ editingTask ? 'Edit Task' : 'Create Task' }}</h2>
         <label class="block mb-2">
-          Title: <input v-model="taskTitle" class="border border-gray-300 p-2 rounded w-full" />
+          Заголовок:
+          <input v-model="taskTitle" class="border p-2 rounded w-full" />
         </label>
         <label class="block mb-4">
-          Date:
-          <input type="date" v-model="taskDate" class="border border-gray-300 p-2 rounded w-full" />
+          Дата:
+          <input type="date" v-model="taskDate" class="border p-2 rounded w-full" />
         </label>
         <div class="flex justify-end">
-          <button @click="saveTask" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
+          <button @click="saveTask" class="bg-blue-500 text-white px-4 py-2 rounded">Сохранить</button>
           <button @click="closeModal" class="ml-2 bg-gray-300 text-black px-4 py-2 rounded">
-            Cancel
+            Отмена
           </button>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 export default {
   data() {
     return {
       tasks: [
-        { id: 1, title: 'Task 1', createdAt: '2024-01-24' },
-        { id: 2, title: 'Task 2', createdAt: '2024-01-25' }
-     
+        { id: 1, title: 'Task 1', created: '2024-01-24' },
+        { id: 2, title: 'Task 2', created: '2024-01-25' }
       ],
       isModalOpen: false,
       editingTask: null,
@@ -63,7 +57,7 @@ export default {
   },
   computed: {
     sortedTasks() {
-      return this.tasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      return this.tasks.sort((a, b) => new Date(b.created) - new Date(a.created))
     }
   },
   methods: {
@@ -76,7 +70,7 @@ export default {
     editTask(task) {
       this.editingTask = task
       this.taskTitle = task.title
-      this.taskDate = task.createdAt
+      this.taskDate = task.created
       this.isModalOpen = true
     },
     deleteTask(id) {
@@ -84,19 +78,12 @@ export default {
     },
     saveTask() {
       if (this.editingTask) {
-        
         this.editingTask.title = this.taskTitle
-        this.editingTask.createdAt = this.taskDate
+        this.editingTask.created = this.taskDate
       } else {
-       
-        const newTask = {
-          id: this.tasks.length + 1,
-          title: this.taskTitle,
-          createdAt: this.taskDate
-        }
+        const newTask = { id: this.tasks.length + 1, title: this.taskTitle, created: this.taskDate }
         this.tasks.push(newTask)
       }
-
       this.closeModal()
     },
     closeModal() {
@@ -105,7 +92,9 @@ export default {
   }
 }
 </script>
-
 <style scoped>
-
+  .custom-font-width {
+    
+    font-weight: 900; 
+  }
 </style>
