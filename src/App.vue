@@ -15,5 +15,5 @@ export default {
 </script>
 
 <style>
-/* Глобальные стили с использованием Tailwind CSS */
+
 </style>
