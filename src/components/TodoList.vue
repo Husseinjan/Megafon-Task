@@ -13,21 +13,21 @@
       </div>
     </div>
     <div class="flex items-center justify-between">
-    <button
-      @click="createTask"
-      class="bg-violet-700 text-white font-medium text-[20px] uppercase px-4 py-2 rounded-full shadow-lg border-2 border-violet-400 font-sans p-6 bg-opacity-97"
-    >
-      Создание задач
-    </button>
-    <div>
-      <button @click="sortTasksByDate" class="ml-2 bg-blue-500 text-white px-2 py-1 rounded">
-        Сортировать по дате
+      <button
+        @click="createTask"
+        class="bg-violet-700 text-white font-medium text-[20px] uppercase px-4 py-2 rounded-full shadow-lg border-2 border-violet-400 font-sans p-6 bg-opacity-97"
+      >
+        Создание задач
       </button>
-      <button @click="sortTasksById" class="ml-2 bg-blue-500 text-white px-2 py-1 rounded">
-        Сортировать по ID
-      </button>
+      <div>
+        <button @click="sortTasksByDate" class="ml-2 bg-violet-700 text-white px-2 py-1 rounded">
+          Сортировать по дате
+        </button>
+        <button @click="sortTasksById" class="ml-2 bg-violet-700 text-white px-2 py-1 rounded">
+          Сортировать по ID
+        </button>
+      </div>
     </div>
-  </div>
 
     <ul class="mt-4">
       <li
@@ -44,13 +44,13 @@
             @click="editTask(task)"
             class="ml-2 bg-violet-700 text-white text-[15px] px-2 py-1 rounded"
           >
-          <i class="pi pi-pencil"></i>
+            <i class="pi pi-pencil"></i>
           </button>
           <button
             @click="deleteTask(task.id)"
             class="ml-2 bg-red-500 text-white text-[15px] px-2 py-1 rounded"
           >
-          <i class="pi pi-trash"></i>
+            <i class="pi pi-trash"></i>
           </button>
         </div>
       </li>
@@ -89,7 +89,6 @@
   </div>
 </template>
 <script>
-
 export default {
   data() {
     return {
