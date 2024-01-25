@@ -1,10 +1,20 @@
 <template>
   <div class="p-4 bg-green-545">
-    <h1 class="text-white   items-center  font-bold  mb-4 uppercase font-extrabold">Список задач</h1>
-    <button @click="createTask" class="bg-violet-600 text-white px-4 py-2 rounded">
+    <div class="flex items-center justify-between">
+      <h1 class="text-white text-[40px] items-center font-bold mb-4 font-extrabold">Список Задач</h1>
+      <div class="flex center-items justify-between"> 
+        <div class="flex items-center justify-center ml-2  w-10 h-10 bg-violet-700 rounded-full"> </div>
+        <div class="flex items-center justify-center ml-2 w-10 h-10 bg-violet-700 rounded-full"> </div>
+        <div class="flex items-center justify-center ml-2 w-10 h-10 bg-white rounded-full"> </div>
+      </div>
+    </div>
+    <button
+      @click="createTask"
+      class="bg-violet-700 text-white font-extrabold text-[20px] uppercase px-4 py-2 rounded-full"
+    >
       Создание задач
     </button>
-    
+
     <ul class="mt-4">
       <li v-for="task in sortedTasks" :key="task.id" class="my-2 p-2 border rounded">
         <span>{{ task.title }} - {{ task.created }}</span>
@@ -32,7 +42,9 @@
           <input type="date" v-model="taskDate" class="border p-2 rounded w-full" />
         </label>
         <div class="flex justify-end">
-          <button @click="saveTask" class="bg-blue-500 text-white px-4 py-2 rounded">Сохранить</button>
+          <button @click="saveTask" class="bg-blue-500 text-white px-4 py-2 rounded">
+            Сохранить
+          </button>
           <button @click="closeModal" class="ml-2 bg-gray-300 text-black px-4 py-2 rounded">
             Отмена
           </button>
@@ -93,8 +105,7 @@ export default {
 }
 </script>
 <style scoped>
-  .custom-font-width {
-    
-    font-weight: 900; 
-  }
+.custom-font-width {
+  font-weight: 900;
+}
 </style>
